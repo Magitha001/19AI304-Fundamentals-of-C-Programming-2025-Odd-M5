@@ -39,7 +39,48 @@
 ### Step 12: 
   Stop
 # Program:
+```c
+#include <stdio.h>
+
+void swapv(int x, int y) {  
+    int temp = x;  
+    x = y;  
+    y = temp;  
+    printf("Inside swapv (Call by Value): x = %d, y = %d\n", x, y);
+}
+
+void swapr(int *x, int *y) {  
+    int temp = *x;  
+    *x = *y;  
+    *y = temp;  
+    printf("Inside swapr (Call by Reference): a = %d, b = %d\n", *x, *y);
+}
+
+int main() {  
+    int a = 10, b = 20;
+
+    printf("Before swapv: a = %d, b = %d\n", a, b);
+    swapv(a, b);
+    printf("After swapv: a = %d, b = %d\n", a, b);
+
+    printf("\nBefore swapr: a = %d, b = %d\n", a, b);
+    swapr(&a, &b);
+    printf("After swapr: a = %d, b = %d\n", a, b);
+
+    return 0;
+}
+```
 # Output:
+```
+Before swapv: a = 10, b = 20
+Inside swapv (Call by Value): x = 20, y = 10
+After swapv: a = 10, b = 20
+
+Before swapr: a = 10, b = 20
+Inside swapr (Call by Reference): a = 20, b = 10
+After swapr: a = 20, b = 10
+
+```
 # Result: 
   Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -77,7 +118,38 @@
 ### Step 10:
   Stop
 # Program:
+```c
+#include <stdio.h>
+
+int fibo(int x) {
+    if (x == 0)
+        return 0;
+    else if (x == 1)
+        return 1;
+    else
+        return fibo(x - 1) + fibo(x - 2);
+}
+
+int main() {
+    int n, i;
+
+    printf("Enter number of terms: ");
+    scanf("%d", &n);
+
+    printf("Fibonacci series of %d terms:\n", n);
+    for (i = 0; i < n; i++) {
+        printf("%d ", fibo(i));
+    }
+
+    return 0;
+}
+```
 # Output:
+```
+Enter number of terms: 7
+Fibonacci series of 7 terms:
+0 1 1 2 3 5 8
+```
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -119,7 +191,44 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 12:
   Stop
 # Program:
+```c
+#include <stdio.h>
+
+void printEvenOdd(int cur, int limit) {
+    if (cur > limit)
+        return;
+
+    if (cur == limit)
+        printf("%d", cur);
+    else
+        printf("%d, ", cur);
+
+    printEvenOdd(cur + 2, limit);
+}
+
+int main() {
+    int lowerLimit, upperLimit;
+
+    printf("Enter the lower limit: ");
+    scanf("%d", &lowerLimit);
+
+    printf("Enter the upper limit: ");
+    scanf("%d", &upperLimit);
+
+    printf("The sequence is:\n");
+    printEvenOdd(lowerLimit, upperLimit);
+
+    return 0;
+}
+
+```
 # Output:
+```
+Enter the lower limit: 3
+Enter the upper limit: 15
+The sequence is:
+3, 5, 7, 9, 11, 13, 15
+```
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -161,7 +270,42 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11:
   Stop
 # Program:
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *ptr, n, i, sum = 0;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    ptr = (int *)calloc(n, sizeof(int));
+
+    if (ptr == NULL) {
+        printf("Memory allocation failed!");
+        return 0;
+    }
+
+    printf("Enter %d integers:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &ptr[i]);
+        sum += ptr[i];
+    }
+
+    printf("Sum of the elements = %d\n", sum);
+
+    free(ptr);
+    return 0;
+}
+```
 # Output:
+```
+Enter number of elements: 5
+Enter 5 integers:
+10 20 30 40 50
+Sum of the elements = 150
+```
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -197,6 +341,37 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+```c
+#include <stdio.h>
+
+void displayArray(int *arr, int size) {
+    printf("Array elements are:\n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", *(arr + i));   // Using pointer arithmetic
+    }
+    printf("\n");
+}
+
+int main() {
+    int arr[5];
+    int i;
+
+    printf("Enter 5 integers:\n");
+    for (i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    displayArray(arr, 5);
+
+    return 0;
+}
+```
 # Output:
+```
+Enter 5 integers:
+10 20 30 40 50
+Array elements are:
+10 20 30 40 50
+```
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
